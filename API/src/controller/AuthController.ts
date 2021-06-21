@@ -10,7 +10,7 @@ class AuthController {
     const { username, password } = req.body;
 
     if (!(username && password)) {
-      return res.status(400).json({ message: ' Username & Password are required!' });
+      return res.status(400).json({ message: ' Usario o contraseña son requeridas!' });
     }
 
     const userRepository = getRepository(Users);
@@ -19,12 +19,12 @@ class AuthController {
     try {
       user = await userRepository.findOneOrFail({ where: { username } });
     } catch (e) {
-      return res.status(400).json({ message: ' Username or password incorecct!' });
+      return res.status(400).json({ message: 'Usuario o contraseña Incorrectas!' });
     }
 
     // Check password
     if (!user.checkPassword(password)) {
-      return res.status(400).json({ message: 'Username or Password are incorrect!' });
+      return res.status(400).json({ message: 'Usuario o contraseña Incorrectas!' });
     }
 
     const token = jwt.sign({ userId: user.id, username: user.username }, config.jwtSecret, { expiresIn: '1h' });
@@ -37,7 +37,7 @@ class AuthController {
     const { oldPassword, newPassword } = req.body;
 
     if (!(oldPassword && newPassword)) {
-      res.status(400).json({ message: 'Old password & new password are required' });
+      res.status(400).json({ message: 'Antigüa contraseña y nueva contraseña son requeridos' });
     }
 
     const userRepository = getRepository(Users);
@@ -46,11 +46,11 @@ class AuthController {
     try {
       user = await userRepository.findOneOrFail(userId);
     } catch (e) {
-      res.status(400).json({ message: 'Somenthing goes wrong!' });
+      res.status(400).json({ message: 'Algo a surgido mal!' });
     }
 
     if (!user.checkPassword(oldPassword)) {
-      return res.status(401).json({ message: 'Check your old Password' });
+      return res.status(401).json({ message: 'Verifica tu antigüa contraseña' });
     }
 
     user.password = newPassword;
@@ -65,7 +65,7 @@ class AuthController {
     user.hashPassword();
     userRepository.save(user);
 
-    res.json({ message: 'Password change!' });
+    res.json({ message: 'Contraseña modificada!' });
   };
 }
 export default AuthController;

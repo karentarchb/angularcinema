@@ -1,6 +1,6 @@
 <div class="home">
 <h1 *ngIf="(authSvc.user$ | async) as user">
-  Bienvenido, {{ user?.username || 'User' }}.
+  Bienvenido al portal.{{ user?.username || '' }}
 </h1>
 
 <!-- Main -->
@@ -36,7 +36,7 @@
     
     <div class="row">
       <div class="col-12 col-md-6 col-lg-8 mb-4">
-        <a class="card2-redirec" href="#">
+        <a class="card2-redirec"  href="http://localhost:4500/movies">
         <div class="card2">
           <img class="card-img-top" src="https://image.flaticon.com/icons/png/512/777/777242.png" alt="chofer de vehiculos conductor elegido">
           <div class="card-body">

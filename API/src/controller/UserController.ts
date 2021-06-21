@@ -11,13 +11,13 @@ export class UserController {
     try {
       users = await userRepository.find({ select: ['id', 'username', 'role'] });
     } catch (e) {
-      res.status(404).json({ message: 'Somenthing goes wrong!' });
+      res.status(404).json({ message: 'Algo a salido mal!' });
     }
 
     if (users.length > 0) {
       res.send(users);
     } else {
-      res.status(404).json({ message: 'Not result' });
+      res.status(404).json({ message: 'No hay resultado' });
     }
   };
 
@@ -28,7 +28,7 @@ export class UserController {
       const user = await userRepository.findOneOrFail(id);
       res.send(user);
     } catch (e) {
-      res.status(404).json({ message: 'Not result' });
+      res.status(404).json({ message: 'No hay resultado' });
     }
   };
 

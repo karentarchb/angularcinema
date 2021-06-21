@@ -26,6 +26,9 @@ const routes: Routes = [
       import('./pages/auth/login/login.module').then((m) => m.LoginModule),
     canActivate: [CheckLoginGuard],
   },
+  { path: 'pelicula', loadChildren: () => import('./pages/peliculas/peliculas.module').then(m => m.PeliculasModule) },
+  { path: 'sala', loadChildren: () => import('./pages/sala/sala.module').then(m => m.SalaModule) },
+  { path: 'peliculas', loadChildren: () => import('./pages/peliculas/peliculas.module').then(m => m.PeliculasModule) },
 ];
 
 @NgModule({
