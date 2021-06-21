@@ -1,0 +1,23 @@
+<!-- Elaborado: Karen Torres Archbold -->
+<!-- 20/06/2021 -->
+<!-- Se agrego bootstrap para ocultar el titulo en dispositivos mobiles lin.13 -->
+<!-- Se agrego una imagen de logo generica lin-12 -->
+<!-- Se agrego un cierre de sesión lin.22 -->
+<mat-toolbar>
+  <ng-container *ngIf="isAdmin === 'admin'">
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </ng-container>
+  <img src="https://image.flaticon.com/icons/png/512/2784/2784610.png" alt="Logo">
+  <div class="d-none d-lg-block d-md-block">
+  <span>CINEMA-KTAR</span>
+</div>
+  <span class="spacer"></span>
+  <a *ngIf="!isLogged; else viewLogout" mat-button routerLink="/login">Login</a>
+  <a *ngIf="isAdmin === 'admin'" mat-button routerLink="/admin">Admin</a>
+</mat-toolbar>
+
+<ng-template #viewLogout>
+  <a mat-button (click)="onLogout()"><mat-icon matSuffix>person_outline</mat-icon> Iniciar sesión...</a>
+</ng-template>

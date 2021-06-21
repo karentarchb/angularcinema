@@ -1,0 +1,21 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+mat-toolbar {
+  background: #10002b;
+}
+
+mat-toolbar span{
+  margin-left: 15px;
+  color: #fff;
+}
+
+mat-toolbar img{
+  width: 50px;
+}
